@@ -6,7 +6,7 @@
 /*   By: nosahimi <nosahimi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 09:56:17 by nosahimi          #+#    #+#             */
-/*   Updated: 2025/02/20 16:37:37 by nosahimi         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:57:36 by nosahimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,39 @@ int ft_strlen(char *str)
     return (count);
 }
 
-void fill_stack(int *top, int value, int *stack, int ac)
+void fill_stack(int *top, char **av , int *stack, int ac)
 {
+    int i;
+    int j;
+    int count;
+    char **fill;
+    int av_cpy[ac];
 
     if (*top == ac - 1)
         return;
-    (*top)++;
-    stack[*top] = value;
-}
-int is_sorted(int top, int *stack)
-{
-    int i;
-
-    i = 0;
-    while (i < top)
+    i = 1;
+    count = 0;
+    while(i < ac )
     {
-        if (stack[i] < stack[i + 1])
-            return (0);
+        j = 0;
+        fill = ft_split(av[i], ' ');
+        while(fill[j] != NULL)
+        {
+            av_cpy[count++] = ft_atoi(fill[j]);
+            // printf("%d ",ft_atoi(fill[j]));
+            j++;
+        }
         i++;
     }
-    return (1);
+    i = count - 1;
+    while(i >= 0)
+    {
+        printf("%d ",av_cpy[i]);
+        stack[++(*top)] = av_cpy[i];
+        i--;
+    }
 }
+
 int is_all_digit(char *str)
 {
     if (*str == '+' || *str == '-')
@@ -72,7 +84,9 @@ int error_check(int ac, char **av)
     int i;
     int j;
     i = 1;
-
+    
+    if (ac < 2)
+      return 0;
     while (i < ac)
     {
         j = i + 1;
@@ -80,7 +94,7 @@ int error_check(int ac, char **av)
             return 0;
         while (j < ac)
         {
-            if (ft_strcmp(av[i], av[j]) == 0)
+            if (ft_atoi(av[i]) ==  ft_atoi(av[j]))
                 return 0;
             j++;
         }
