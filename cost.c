@@ -6,7 +6,7 @@
 /*   By: nosahimi <nosahimi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/22 08:57:05 by nosahimi          #+#    #+#             */
-/*   Updated: 2025/02/25 09:18:36 by nosahimi         ###   ########.fr       */
+/*   Updated: 2025/02/28 16:55:07 by nosahimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int find_target(int nb, int top, int *stack)
     }
     return hold;
 }
-int absolute(int nb)
+static int absolute(int nb)
 {
     if (nb < 0)
         return -nb;
@@ -72,13 +72,13 @@ static void itt_rotate(cost moves, int *stack_a, int *stack_b, int top_a, int to
 }
 void into_the_top(cost moves, int *stack_a, int *stack_b, int top_a, int top_b, int ac)
 {
-    
+	
         itt_rotate(moves, stack_a, stack_b, top_a, top_b, ac);
         while (moves.cost_a < 0 && moves.cost_b < 0)
         {
-            rr_rrr(top_a, stack_a,top_b, stack_b, ac, "rrr");
-            moves.cost_a++;
-            moves.cost_b++;
+			rr_rrr(top_a, stack_a,top_b, stack_b, ac, "rrr");
+			moves.cost_a++;
+			moves.cost_b++;
         }
         while (moves.cost_a < 0)
         {

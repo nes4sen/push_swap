@@ -6,7 +6,7 @@
 /*   By: nosahimi <nosahimi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 09:59:26 by nosahimi          #+#    #+#             */
-/*   Updated: 2025/02/25 15:19:16 by nosahimi         ###   ########.fr       */
+/*   Updated: 2025/02/28 17:27:52 by nosahimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,42 +26,54 @@ typedef struct s_data
     int cost_total;
 }cost;
 
-void    display_stacks(int top_a, int *stack_a, int top_b, int *stack_b);
-
-
-//operations
+//moves
 void push(int *top_in, int *top_out, int *stack_in, int *stack_out,int size, char *op);
 void swap(int top, int *stack,int size, char *op);
 void rotate(int top, int *stack,int size, char *op);
 void rev_rotate(int top, int *stack,int size, char *op);
 void rr_rrr(int top_a, int *stack_a,int top_b, int *stack_b, int size, char *op);
 
-//stack utils 
-void    fill_stack(int *top, char **av, int *stack, int ac);
-int is_sorted(int top, int *stack);
-int is_all_digit(char *str);
-int ft_strcmp(char *s1, char *s2);
-int error_check(int ac, char **av);
-int ft_strlen(char *str);
-int	ft_atoi(const char *str);
-char	**ft_split(char const *s, char c);
-
-
-//sort utils
-void    sorting(int *top_a, int *top_b, int *stack_a, int *stack_b, int ac);
-void    turk(int *top_a, int *top_b, int *stack_a, int *stack_b, int ac);
-void    yassin(int top_a, int *stack_a, int size);
-void    trio(int *stack, int size);
-int     biggest_num(int top, int *stack);
-int     *pseudo_sort(int *array, int size);
-
-//cost functions
-int count_to_top(int value, int *stack, int top);
-int smallest_num(int top, int *stack);
-int find_target(int nb, int top, int *stack);
-void into_the_top(cost moves, int *stack_a, int *stack_b, int top_a, int top_b, int ac);
+// cost function
 cost get_cost(int target_a, int value_b, int *stack_a, int *stack_b, int top_a, int top_b);
 cost best_move(int top_a, int top_b, int *stack_a, int *stack_b);
+int find_target(int nb, int top, int *stack);
+int count_to_top(int value, int *stack, int top);
+void into_the_top(cost moves, int *stack_a, int *stack_b, int top_a, int top_b, int ac);
+ 
+//stack utils 
+int     error_check(int len, int *stack,int ac, char **av);
+void    fill_stack(int *top, char **av, int *stack,int *stack_b, int ac);
+void    morgan_freeman(int *stack_a, int *stack_b);
 
+
+//input handling
+int is_sorted(int top, int *stack);
+int is_all_valid(int ac, char **av);
+int is_valid_num(char *str);
+long	ft_atoi(const char *str);
+int	count_args(char **av, int ac);
+
+//sorting 
+void    sorting(int *top_a, int *top_b, int *stack_a, int *stack_b, int ac);
+void    turk(int *top_a, int *top_b, int *stack_a, int *stack_b, int ac);
+void    trio(int *stack, int size);
+void    yassin(int top_a, int *stack_a, int size);
+int     *pseudo_sort(int *array, int size);
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+void	swaping(int *a, int *b);
+
+
+
+
+// split
+char	**ft_split(char const *s, char c);
+void    free_split(char **av);
+size_t	count_word(const char *str, char c);
+
+//helper functions
+int ft_strlen(char *str);
+int biggest_num(int top, int *stack);
+int ft_strcmp(char *s1, char *s2);
+int smallest_num(int top, int *stack);
 
 #endif

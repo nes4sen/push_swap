@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moves.c                                            :+:      :+:    :+:   */
+/*   operations.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nosahimi <nosahimi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/14 10:01:52 by nosahimi          #+#    #+#             */
-/*   Updated: 2025/02/28 17:27:44 by nosahimi         ###   ########.fr       */
+/*   Created: 2025/02/28 18:40:20 by nosahimi          #+#    #+#             */
+/*   Updated: 2025/02/28 18:40:41 by nosahimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
+#include "checker.h"
 
 void push(int *top_in, int *top_out, int *stack_in, int *stack_out, int size, char *op)
 {
@@ -87,4 +86,3 @@ void rr_rrr(int top_a, int *stack_a,int top_b, int *stack_b, int size, char *op)
         write(1, "rrr\n",4);
     }
 }
-

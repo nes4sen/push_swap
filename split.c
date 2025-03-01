@@ -1,52 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asplit.c                                           :+:      :+:    :+:   */
+/*   split.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nosahimi <nosahimi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 09:11:49 by nosahimi          #+#    #+#             */
-/*   Updated: 2025/02/25 10:43:00 by nosahimi         ###   ########.fr       */
+/*   Updated: 2025/02/28 17:15:52 by nosahimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *str)
-{
-	int	nb;
-	int	sign;
 
-	while (*str == ' ' || (*str >= 7 && *str <= 13))
-		str++;
-	sign = 1;
-	if (*str == '+' || *str == '-')
-	{
-		if (*str == '-')
-			sign = -1;
-		str++;
-	}
-	nb = 0;
-	while (*str && (*str >= '0' && *str <= '9'))
-		nb = (nb * 10) + (*str++ - 48);
-	return (sign * nb);
-}
 
-static size_t	count_word(const char *str, char c)
-{
-	size_t	i;
-	size_t	len;
-
-	i = 0;
-	len = 0;
-	while (str[i])
-	{
-		if (str[i] != c && (str[i + 1] == c || !str[i + 1]))
-			len++;
-		i++;
-	}
-	return (len);
-}
 
 void	freedom(char **str)
 {
@@ -85,6 +52,7 @@ static char	*word_allocat(const char **s, char c)
         i++;   
     }
     res[i] = '\0';
+	*s += len;
 	return (res);
 }
 
@@ -107,10 +75,18 @@ char	**ft_split(char const *s, char c)
 		if (!big[i - 1])
 		{
 			freedom(big);
-			big = NULL;
 			return (NULL);
 		}
 	}
 	big[i] = NULL;
 	return (big);
+}
+void free_split(char **av)
+{
+    int i;
+
+    i = 0;
+    while (av[i])
+        free(av[i++]);
+    free(av);
 }

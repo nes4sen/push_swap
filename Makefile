@@ -1,16 +1,18 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 
 
-CFILES =asplit.c \
+CFILES =split.c \
 		cost.c \
-		homless_functions.c \
+		helper_functions.c \
 		moves.c \
 		push_swap.c \
 		sorting.c \
-		sort_utils.c \
-		utiles.c 
+		stack_utiles.c \
+		input_handling.c \
+		homeless_functions.c
+
 
 OBJ = $(CFILES:.c=.o)
 NAME = push_swap
