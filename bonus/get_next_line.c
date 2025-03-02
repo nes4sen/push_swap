@@ -6,11 +6,11 @@
 /*   By: nosahimi <nosahimi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 12:21:15 by nosahimi          #+#    #+#             */
-/*   Updated: 2025/02/28 18:38:40 by nosahimi         ###   ########.fr       */
+/*   Updated: 2025/03/02 11:24:45 by nosahimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../push_swap.h"
 
 static char	*find_line(int fd, char *container, char *buff)
 {
@@ -18,11 +18,11 @@ static char	*find_line(int fd, char *container, char *buff)
 	ssize_t	r_size;
 
 	r_size = 1;
-	if (BUFFER_SIZE <= 0)
+	if (3 <= 0)
 		return (NULL);
 	while (r_size > 0)
 	{
-		r_size = read(fd, buff, BUFFER_SIZE);
+		r_size = read(fd, buff, 3);
 		if (r_size == -1)
 			return (NULL);
 		buff[r_size] = '\0';
@@ -76,9 +76,9 @@ char	*get_next_line(int fd)
 	char		*line;
 	char		*buff;
 
-	if (BUFFER_SIZE <= 0 || fd < 0)
-		return (NULL);
-	buff = malloc((size_t)BUFFER_SIZE + 1);
+	if (fd < 0)
+		return (free(container), NULL);
+	buff = malloc(sizeof(char) * 4);
 	if (!buff)
 		return (NULL);
 	temp = find_line(fd, container, buff);

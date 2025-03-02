@@ -1,32 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   struct.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nosahimi <nosahimi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/11 12:07:52 by nosahimi          #+#    #+#             */
-/*   Updated: 2025/02/28 18:17:13 by nosahimi         ###   ########.fr       */
+/*   Created: 2025/03/02 15:13:19 by nosahimi          #+#    #+#             */
+/*   Updated: 2025/03/02 15:35:57 by nosahimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "push_swap.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+typedef struct s_struct
+{
+	int a;
+	char *ptr;
+}t_struct;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4
-# endif
-
-int		is_new_line(char *str);
-size_t	ft_strlen(char *str);
-
-char	*get_next_line(int fd);
-char	*ft_strdup(char *str);
-char	*ft_substr(char *s, size_t start, size_t len);
-char	*ft_strjoin(char *str1, char *str2);
-
-#endif
+void fun(t_struct *ss)
+{
+	ss->a = 3;
+	int top = ss->a;
+	top = top + 5;	
+	printf("top = %d \n", top);
+	ss->ptr = "hello";
+}
+int main()
+{
+	t_struct s;
+	
+	s.a = 42;
+	s.ptr = "toto";
+	fun(&s);
+	printf("%d %s\n",s.a ,s.ptr);
+	
+}

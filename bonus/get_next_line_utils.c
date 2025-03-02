@@ -6,11 +6,11 @@
 /*   By: nosahimi <nosahimi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 12:21:12 by nosahimi          #+#    #+#             */
-/*   Updated: 2025/02/28 18:24:00 by nosahimi         ###   ########.fr       */
+/*   Updated: 2025/03/01 10:19:24 by nosahimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "../push_swap.h"
 
 char	*ft_strjoin(char *str1, char *str2)
 {
@@ -58,11 +58,11 @@ char	*ft_strdup(char *s)
 	return (p);
 }
 
-char	*ft_substr(char *s, size_t start, size_t len)
+char	*ft_substr(char *s, int start, int len)
 {
 	char	*str;
 	char	*sub;
-	size_t	i;
+	int		i;
 
 	if (!s)
 		return (NULL);
@@ -92,14 +92,4 @@ int	is_new_line(char *str)
 	return (0);
 }
 
-size_t	ft_strlen(char *str)
-{
-	size_t	count;
 
-	if (str == NULL)
-		return (0);
-	count = 0;
-	while (str[count])
-		count++;
-	return (count);
-}

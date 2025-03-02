@@ -6,7 +6,7 @@
 /*   By: nosahimi <nosahimi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 09:56:17 by nosahimi          #+#    #+#             */
-/*   Updated: 2025/02/28 17:46:37 by nosahimi         ###   ########.fr       */
+/*   Updated: 2025/03/02 12:08:04 by nosahimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,28 +55,28 @@ long ft_atoi(const char *str)
 }
 void fill_stack(int *top, char **av , int *stack_a, int *stack_b, int ac)
 {
-    int i;
-    int j;
-    int count;
-    char **fill;
-    int av_cpy[550]; 
-    
-    i = 1;
-    count = 0;
-    while (i < ac)
-    {
-        fill = ft_split(av[i], ' ');
-        j = 0;
-        while (fill[j] != NULL)
-        {
-            int_range(fill[j], stack_a, stack_b);
-            av_cpy[count++] = ft_atoi(fill[j]);
-            j++;
-        }
-        free_split(fill);
-        i++;
-    }
-    i = count  - 1;
-    while (i >= 0)
-        stack_a[++(*top)] = av_cpy[i--];
+	int i;
+	int j;
+	int count;
+	char **fill;
+	int av_cpy[550]; 
+
+	i = 1;
+	count = 0;
+	while (i < ac)
+	{
+		fill = ft_split(av[i], ' ');
+		j = 0;
+		while (fill[j] != NULL)
+		{
+			int_range(fill[j], stack_a, stack_b);
+			av_cpy[count++] = ft_atoi(fill[j]);
+			j++;
+		}
+		free_split(fill);
+		i++;
+	}
+	i = count  - 1;
+	while (i >= 0)
+	    stack_a[++(*top)] = av_cpy[i--];
 }

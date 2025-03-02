@@ -3,30 +3,36 @@ CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 
 
-CFILES =split.c \
+P_FILES =split.c \
 		cost.c \
 		helper_functions.c \
 		moves.c \
-		push_swap.c \
 		sorting.c \
 		stack_utiles.c \
 		input_handling.c \
 		homeless_functions.c
 
+B_CFILES =./bonus/checker.c \
+		  ./bonus/get_next_line.c \
+		  ./bonus/get_next_line_utils.c \
 
-OBJ = $(CFILES:.c=.o)
-NAME = push_swap
+C_FILES = $(P_FILES) push_swap.c
 
-B_CFILES =	test.c
 
+P_OBJ = $(P_FILES:.c=.o)
+OBJ = $(C_FILES:.c=.o)
 B_OBJ = $(B_CFILES:.c=.o) 
+
+NAME = push_swap
+B_NAME = checker
+
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
-bonus :$(B_OBJ) 
-
+bonus :$(B_OBJ)  $(P_OBJ)
+	$(CC) $(B_OBJ)  $(P_OBJ) -o $(B_NAME)
 %.o: %.c push_swap.h 
 	$(CC) $(CFLAGS) -c $< -o $@
 
@@ -38,4 +44,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: clean
+.PHONY: clean checker

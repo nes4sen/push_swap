@@ -6,7 +6,7 @@
 /*   By: nosahimi <nosahimi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/28 17:06:42 by nosahimi          #+#    #+#             */
-/*   Updated: 2025/02/28 17:46:55 by nosahimi         ###   ########.fr       */
+/*   Updated: 2025/03/02 12:02:49 by nosahimi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	swaping(int *a, int *b)
 {
 	int temp;
-	
+
 	temp = *a;
 	*a = *b;
 	*b = temp;
